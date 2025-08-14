@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chá Revelação & Chá de Fralda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500&display=swap');
+
+        .font-dancing { font-family: 'Dancing Script', cursive; }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #a56101be 0%, #885d34e0 100%); }
+        .floating { animation: floating 3s ease-in-out infinite; }
+        .floating-delayed { animation: floating 3s ease-in-out infinite; animation-delay: 1.5s; }
+        @keyframes floating { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .pulse-heart { animation: pulse-heart 2s ease-in-out infinite; }
+        @keyframes pulse-heart { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .reveal-animation { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal-animation.show { opacity: 1; transform: translateY(0); }
+        .confetti { position: fixed; width: 10px; height: 10px; background: #814c06; animation: confetti-fall 3s linear infinite; }
+        @keyframes confetti-fall { 0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+        .btn-hover { transition: all 0.3s ease; }
+        .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen font-poppins">
+    <div id="confetti-container" class="pointer-events-none"></div>
+    
+    <header class="text-center py-8 reveal-animation">
+        <div class="floating">
+            <h1 class="font-dancing text-5xl md:text-8xl text-white mb-4">Chá Revelação</h1>
+            <h2 class="font-dancing text-3xl md:text-5xl text-white">e Chá de Fralda</h2>
+            <div class="text-4xl mb-4" aria-label="Emoji bebê e coração">👶🏾🧸</div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 max-w-4xl">
+        <section class="text-center mb-12 reveal-animation">
+            <div class="bg-white border-4 border-yellow-500 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+                <div class="pulse-heart text-6xl mb-4" aria-label="Coração pulsante">💖</div>
+                <h3 class="font-dancing text-4xl text-gray-700 mb-2">Mateus & Geovana</h3>
+                <p class="text-lg text-gray-600">É com imensa alegria que convidamos vocês para celebrar conosco este momento único! Vista uma peça de roupa branca e venha participar do nosso Chá Revelação e Chá de Fralda, tornando este dia ainda mais especial.
+            </div>
+        </section>
+
+        <section class="grid md:grid-cols-2 gap-8 mb-12">
+    <div class="bg-white border-4 border-yellow-500 backdrop-blur-sm rounded-3xl p-8 shadow-xl reveal-animation floating">
+        <div class="text-center">
+            <div class="text-4xl mb-4">📅</div>
+            <h4 class="font-dancing text-3xl text-black-600 mb-4">Data e Horário</h4>
+            <p class="text-xl font-medium text-gray-700">26 de Outubro</p>
+            <p class="text-lg text-gray-600">Domingo, às 13h</p>
+        </div>
+    </div>
+    <div class="bg-white border-4 border-yellow-500 backdrop-blur-sm rounded-3xl p-8 shadow-xl reveal-animation floating-delayed">
+        <div class="text-center">
+            <div class="text-4xl mb-4">📍</div>
+            <h4 class="font-dancing text-3xl text-black-600 mb-4">Local</h4>
+            <p class="text-xl font-medium text-gray-700">⬇️Clique aqui⬇️</p>
+            <p class="text-lg text-gray-600">
+                <a href="https://maps.app.goo.gl/EDkSWovq2DWZzqrf6" target="_blank" class="underline text-blue-700">
+                    Ver no Google Maps
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+        </section>
+
+        <section class="text-center mb-12 reveal-animation">
+            <div class="bg-white border-4 border-yellow-500 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+                <h4 class="font-dancing text-4xl text-Black-600 mb-6">🤔 Será Bryan ou Aurora? 🤔</h4>
+                <div class="flex justify-center gap-8 mb-8">
+                    <button id="boyBtn" class="btn-hover bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-medium shadow-lg">👶 Menino</button>
+                    <button id="girlBtn" class="btn-hover bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-full text-xl font-medium shadow-lg">👶 Menina</button>
+                </div>
+                <div id="revealResult" class="hidden">
+                    <div class="text-6xl mb-4">🎉</div>
+                    <p class="text-2xl font-dancing text-gray-700">Venha descobrir conosco no dia da festa!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 reveal-animation">
+            <div class="bg-white border-4 border-yellow-500 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+                <h4 class="font-dancing text-4xl text-yellow-600 text-center mb-6">Lista de Presentes por pessoa! 🎁</h4>
+                <div class="grid md:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white border-4 border-yellow-500 rounded-2xl p-4">🚼<p class="font-medium">Fraldas (RN, P, M e G)</p></div>
+                    <div class="bg-white border-4 border-yellow-500 rounded-2xl p-4">🎁<p class="font-medium">Mimos Cores Neutra</p></div>
+                    <div class="bg-white border-4 border-yellow-500 rounded-2xl p-4">❤️<p class="font-medium">Amor</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center mb-12 reveal-animation">
+            <div class="bg-white border-4 border-yellow-500 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+                <h4 class="font-dancing text-4xl text-green-600 mb-6">Confirme sua Presença 💚</h4>
+                <p class="text-lg text-gray-700 mb-6">Sua presença é muito importante para nós!</p>
+                <button id="rsvpBtn" class="btn-hover bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-full text-xl font-medium shadow-lg">Confirmar Presença</button>
+                <div id="rsvpMessage" class="hidden mt-6">
+                    <div class="text-4xl mb-2">✅</div>
+                    <p class="text-xl text-green-700 font-medium">Obrigado! Clique abaixo para confirmar no WhatsApp:</p>
+                    <a href="https://wa.me/5571988974943?text=Passando%20para%20confirmar%20a%20minha%20presen%C3%A7a!!" target="_blank" class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg btn-hover">Confirmar via WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 reveal-animation">
+        <div class="font-dancing text-2xl text-white mb-4">Com amor, Mateus & Geovana 💕</div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-animation').forEach(el => observer.observe(el));
+
+        document.getElementById('boyBtn').addEventListener('click', () => { showRevealResult(); createConfetti('#3b82f6'); });
+        document.getElementById('girlBtn').addEventListener('click', () => { showRevealResult(); createConfetti('#ec4899'); });
+
+        function showRevealResult() {
+            const result = document.getElementById('revealResult');
+            result.classList.remove('hidden');
+            result.classList.add('reveal-animation', 'show');
+        }
+
+        document.getElementById('rsvpBtn').addEventListener('click', () => {
+            const msg = document.getElementById('rsvpMessage');
+            msg.classList.remove('hidden');
+            msg.classList.add('reveal-animation', 'show');
+            createConfetti('#10b981');
+        });
+
+        function createConfetti(color) {
+            const container = document.getElementById('confetti-container');
+            const colors = [color, '#fbbf24', '#f59e0b', '#10b981', '#ec4899'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    container.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        setTimeout(() => {
+            document.querySelectorAll('.reveal-animation').forEach(el => el.classList.add('show'));
+        }, 500);
+    </script>
+</body>
+</html>
